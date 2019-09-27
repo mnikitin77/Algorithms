@@ -2,3 +2,5 @@
 /target/
 *.iml
 *.xml
+/input.txt
+/output.txt
