@@ -30,7 +30,6 @@ public class MyDeque<T> {
     // вставка с левой стороны <<<<
     public void insertLeft(T item) {
         if (isFull()) {
-            //throw new RuntimeException("Container is full");
             increase(INCREASE_FACTOR);
         }
         size++;
@@ -41,7 +40,6 @@ public class MyDeque<T> {
     // вставка с правой стороны >>>>
     public void insertRight(T item) {
         if (isFull()) {
-            //throw new RuntimeException("Container is full");
             increase(INCREASE_FACTOR);
         }
         size++;
@@ -109,13 +107,15 @@ public class MyDeque<T> {
     private void increase(int increaseFactor){
         T[] tempArr = (T[]) new Object[data.length * increaseFactor];
 
-        if (head - tail > 0) {
-            System.arraycopy(data, tail, tempArr, tail, size);
+        if (head > tail) {
+            System.arraycopy(data, tail, tempArr, 0, size);
+            tail = 0;
+            head = size - 1;
         } else {
             System.arraycopy(data, 0, tempArr, 0, head + 1);
             System.arraycopy(data, tail, tempArr,
-                    tempArr.length - size - head - 1, size - head - 1);
-            tail = tempArr.length - size - head - 1;
+                    tempArr.length - size + head + 1, size - head - 1);
+            tail = tempArr.length - size + head + 1;
         }
 
         data = tempArr;
