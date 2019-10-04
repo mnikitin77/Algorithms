@@ -31,6 +31,9 @@ public class MyArrayList<T extends Comparable> {
     }
 
     public void add(int index, T item) {
+        if(size == currentCapacity) {
+            increaseSize();
+        }
         if (index < 0) {
             index = 0;
         }
