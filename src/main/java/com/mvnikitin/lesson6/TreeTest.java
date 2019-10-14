@@ -11,10 +11,11 @@ public class TreeTest {
     private static final int TREE_DEPTH = 6;
 
     private List<MyTreeMap> trees;
+    private float numberOfNotBalanced;
 
     public TreeTest(int depth, int arraysCount) {
         trees = new ArrayList<>(arraysCount);
-        int numberOfNotBalanced = 0;
+        numberOfNotBalanced = 0;
 
         // Create and initialize trees
         for (int i = 0; i < arraysCount; i++) {
@@ -24,21 +25,27 @@ public class TreeTest {
                 numberOfNotBalanced++;
             }
         }
-
-        System.out.printf("Of %d binary trees with the height of %d " +
-                        "unbalanced are %.2f%%", arraysCount, depth,
-                (numberOfNotBalanced / trees.size()) * 100f);
-        System.out.println();
-        System.out.println();
-        System.out.println("Data listing:");
-
-        for(MyTreeMap tree: trees) {
-            System.out.println(tree);
-        }
     }
 
     public static void main(String[] args) {
         TreeTest treeTest = new TreeTest(TREE_DEPTH, NUMBER_OF_TREES);
+        treeTest.unbalancedInfo();
+        treeTest.treesDetailedInfo();
+    }
+
+    public void unbalancedInfo() {
+        System.out.printf("Of %d binary trees with the height of %d " +
+                        "unbalanced are %.2f%%", trees.size(), TREE_DEPTH,
+                (numberOfNotBalanced / trees.size()) * 100f);
+        System.out.println();
+        System.out.println();
+        System.out.println("Data listing:");
+    }
+
+    public void treesDetailedInfo() {
+        for(MyTreeMap tree: trees) {
+            System.out.println(tree);
+        }
     }
 
     private MyTreeMap createTree(int depth) {
@@ -63,23 +70,21 @@ public class TreeTest {
 //    Of 20 binary trees with the height of 6 unbalanced are 100,00%
 //
 //    Data listing:
-//    Size: 11, Height: 6, Is balanced: false, Root Key: -56, Tree: [ {-93}:-93  {-85}:-85  {-77}:-77  {-70}:-70  {-56}:-56  {-39}:-39  {-29}:-29  {-22}:-22  {16}:16  {40}:40  {94}:94 ]
-//    Size: 8, Height: 6, Is balanced: false, Root Key: -83, Tree: [ {-83}:-83  {-60}:-60  {-48}:-48  {-10}:-10  {65}:65  {74}:74  {80}:80  {97}:97 ]
-//    Size: 14, Height: 6, Is balanced: false, Root Key: -90, Tree: [ {-94}:-94  {-90}:-90  {-56}:-56  {2}:2  {19}:19  {22}:22  {26}:26  {36}:36  {66}:66  {78}:78  {90}:90  {91}:91  {97}:97  {100}:100 ]
-//    Size: 17, Height: 6, Is balanced: false, Root Key: 42, Tree: [ {-98}:-98  {-81}:-81  {-75}:-75  {-62}:-62  {-61}:-61  {-19}:-19  {-17}:-17  {-4}:-4  {-3}:-3  {3}:3  {29}:29  {42}:42  {47}:47  {72}:72  {75}:75  {84}:84  {98}:98 ]
-//    Size: 15, Height: 6, Is balanced: false, Root Key: 23, Tree: [ {-64}:-64  {-53}:-53  {-48}:-48  {-36}:-36  {-29}:-29  {-9}:-9  {1}:1  {22}:22  {23}:23  {45}:45  {52}:52  {67}:67  {69}:69  {73}:73  {79}:79 ]
-//    Size: 17, Height: 6, Is balanced: false, Root Key: -58, Tree: [ {-99}:-99  {-86}:-86  {-76}:-76  {-58}:-58  {-57}:-57  {-56}:-56  {-49}:-49  {-47}:-47  {-19}:-19  {-12}:-12  {5}:5  {16}:16  {30}:30  {36}:36  {47}:47  {62}:62  {96}:96 ]
-//    Size: 11, Height: 6, Is balanced: false, Root Key: 75, Tree: [ {-89}:-89  {-51}:-51  {-46}:-46  {-43}:-43  {-25}:-25  {-13}:-13  {-3}:-3  {18}:18  {25}:25  {75}:75  {76}:76 ]
-//    Size: 17, Height: 6, Is balanced: false, Root Key: -41, Tree: [ {-78}:-78  {-59}:-59  {-46}:-46  {-41}:-41  {-40}:-40  {-22}:-22  {-16}:-16  {-14}:-14  {-6}:-6  {-3}:-3  {27}:27  {47}:47  {48}:48  {55}:55  {66}:66  {70}:70  {94}:94 ]
-//    Size: 10, Height: 6, Is balanced: false, Root Key: -90, Tree: [ {-90}:-90  {-48}:-48  {-21}:-21  {-4}:-4  {-2}:-2  {0}:0  {12}:12  {13}:13  {36}:36  {63}:63 ]
-//    Size: 9, Height: 6, Is balanced: false, Root Key: -97, Tree: [ {-97}:-97  {-80}:-80  {-65}:-65  {-28}:-28  {-14}:-14  {-3}:-3  {16}:16  {31}:31  {88}:88 ]
-//    Size: 21, Height: 6, Is balanced: false, Root Key: -35, Tree: [ {-68}:-68  {-45}:-45  {-41}:-41  {-37}:-37  {-36}:-36  {-35}:-35  {-31}:-31  {-21}:-21  {-19}:-19  {-1}:-1  {21}:21  {27}:27  {33}:33  {39}:39  {47}:47  {48}:48  {51}:51  {54}:54  {60}:60  {65}:65  {95}:95 ]
-//    Size: 13, Height: 6, Is balanced: false, Root Key: 72, Tree: [ {-72}:-72  {-52}:-52  {-43}:-43  {-38}:-38  {-15}:-15  {24}:24  {28}:28  {64}:64  {66}:66  {72}:72  {79}:79  {94}:94  {99}:99 ]
-//    Size: 8, Height: 6, Is balanced: false, Root Key: 62, Tree: [ {10}:10  {23}:23  {43}:43  {44}:44  {55}:55  {58}:58  {62}:62  {91}:91 ]
-//    Size: 12, Height: 6, Is balanced: false, Root Key: -96, Tree: [ {-97}:-97  {-96}:-96  {-75}:-75  {-62}:-62  {-56}:-56  {-12}:-12  {11}:11  {13}:13  {47}:47  {60}:60  {76}:76  {80}:80 ]
-//    Size: 17, Height: 6, Is balanced: false, Root Key: 54, Tree: [ {-95}:-95  {-92}:-92  {-87}:-87  {-71}:-71  {-59}:-59  {-26}:-26  {-24}:-24  {-21}:-21  {-20}:-20  {-9}:-9  {-8}:-8  {12}:12  {51}:51  {54}:54  {70}:70  {75}:75  {80}:80 ]
-//    Size: 14, Height: 6, Is balanced: false, Root Key: -59, Tree: [ {-92}:-92  {-72}:-72  {-59}:-59  {-46}:-46  {-33}:-33  {-5}:-5  {30}:30  {31}:31  {34}:34  {35}:35  {62}:62  {88}:88  {90}:90  {91}:91 ]
-//    Size: 18, Height: 6, Is balanced: false, Root Key: 45, Tree: [ {-96}:-96  {-91}:-91  {-79}:-79  {-72}:-72  {-62}:-62  {-55}:-55  {-32}:-32  {-29}:-29  {-21}:-21  {-6}:-6  {-3}:-3  {0}:0  {24}:24  {34}:34  {45}:45  {47}:47  {58}:58  {85}:85 ]
-//    Size: 15, Height: 6, Is balanced: false, Root Key: 96, Tree: [ {-77}:-77  {-48}:-48  {-43}:-43  {-1}:-1  {20}:20  {30}:30  {31}:31  {33}:33  {47}:47  {51}:51  {78}:78  {85}:85  {89}:89  {96}:96  {99}:99 ]
-//    Size: 11, Height: 6, Is balanced: false, Root Key: 86, Tree: [ {-85}:-85  {-76}:-76  {-71}:-71  {-68}:-68  {-57}:-57  {-38}:-38  {-29}:-29  {5}:5  {75}:75  {86}:86  {92}:92 ]
-//    Size: 10, Height: 6, Is balanced: false, Root Key: -67, Tree: [ {-72}:-72  {-67}:-67  {-24}:-24  {-8}:-8  {0}:0  {15}:15  {43}:43  {46}:46  {85}:85  {94}:94 ]
+//    Size: 14, Height: 6, Is balanced: false, Root Key: -82, Tree: [ {-90}:-90  {-82}:-82  {-72}:-72  {-39}:-39  {-34}:-34  {3}:3  {31}:31  {32}:32  {39}:39  {59}:59  {66}:66  {77}:77  {82}:82  {97}:97 ]
+//    Size: 17, Height: 6, Is balanced: false, Root Key: 63, Tree: [ {-97}:-97  {-84}:-84  {-66}:-66  {-59}:-59  {-50}:-50  {-39}:-39  {-35}:-35  {-30}:-30  {-1}:-1  {28}:28  {29}:29  {37}:37  {63}:63  {74}:74  {78}:78  {82}:82  {100}:100 ]
+//    Size: 14, Height: 6, Is balanced: false, Root Key: -20, Tree: [ {-69}:-69  {-58}:-58  {-55}:-55  {-34}:-34  {-20}:-20  {-16}:-16  {-11}:-11  {-9}:-9  {4}:4  {10}:10  {12}:12  {61}:61  {65}:65  {67}:67 ]
+//    Size: 16, Height: 6, Is balanced: false, Root Key: 86, Tree: [ {-88}:-88  {-70}:-70  {-67}:-67  {-51}:-51  {-10}:-10  {9}:9  {18}:18  {27}:27  {39}:39  {41}:41  {54}:54  {65}:65  {77}:77  {86}:86  {90}:90  {94}:94 ]
+//    Size: 11, Height: 6, Is balanced: false, Root Key: -44, Tree: [ {-93}:-93  {-83}:-83  {-44}:-44  {-38}:-38  {21}:21  {24}:24  {34}:34  {60}:60  {64}:64  {67}:67  {94}:94 ]
+//    Size: 19, Height: 6, Is balanced: false, Root Key: -80, Tree: [ {-100}:-100  {-89}:-89  {-82}:-82  {-80}:-80  {-65}:-65  {-56}:-56  {-41}:-41  {-38}:-38  {-37}:-37  {-30}:-30  {-13}:-13  {11}:11  {43}:43  {59}:59  {62}:62  {69}:69  {71}:71  {79}:79  {96}:96 ]
+//    Size: 15, Height: 6, Is balanced: false, Root Key: 9, Tree: [ {-83}:-83  {-72}:-72  {-58}:-58  {-54}:-54  {-44}:-44  {-36}:-36  {9}:9  {14}:14  {25}:25  {39}:39  {42}:42  {50}:50  {84}:84  {91}:91  {96}:96 ]
+//    Size: 16, Height: 6, Is balanced: false, Root Key: -46, Tree: [ {-75}:-75  {-72}:-72  {-52}:-52  {-51}:-51  {-46}:-46  {-38}:-38  {-37}:-37  {-34}:-34  {-22}:-22  {2}:2  {7}:7  {36}:36  {38}:38  {39}:39  {47}:47  {95}:95 ]
+//    Size: 16, Height: 6, Is balanced: false, Root Key: -38, Tree: [ {-93}:-93  {-88}:-88  {-84}:-84  {-70}:-70  {-66}:-66  {-56}:-56  {-38}:-38  {0}:0  {6}:6  {56}:56  {62}:62  {69}:69  {74}:74  {75}:75  {93}:93  {100}:100 ]
+//    Size: 11, Height: 6, Is balanced: false, Root Key: -45, Tree: [ {-97}:-97  {-89}:-89  {-69}:-69  {-45}:-45  {-26}:-26  {1}:1  {8}:8  {9}:9  {30}:30  {31}:31  {68}:68 ]
+//    Size: 14, Height: 6, Is balanced: false, Root Key: -20, Tree: [ {-81}:-81  {-42}:-42  {-20}:-20  {10}:10  {11}:11  {15}:15  {20}:20  {35}:35  {39}:39  {40}:40  {45}:45  {71}:71  {82}:82  {85}:85 ]
+//    Size: 21, Height: 6, Is balanced: false, Root Key: 5, Tree: [ {-97}:-97  {-65}:-65  {-62}:-62  {-54}:-54  {-48}:-48  {-45}:-45  {-44}:-44  {-43}:-43  {-40}:-40  {-28}:-28  {-24}:-24  {-9}:-9  {5}:5  {22}:22  {26}:26  {48}:48  {54}:54  {55}:55  {62}:62  {63}:63  {75}:75 ]
+//    Size: 15, Height: 6, Is balanced: false, Root Key: 77, Tree: [ {-94}:-94  {-85}:-85  {-77}:-77  {-72}:-72  {-60}:-60  {-7}:-7  {1}:1  {16}:16  {31}:31  {34}:34  {54}:54  {63}:63  {77}:77  {89}:89  {96}:96 ]
+//    Size: 15, Height: 6, Is balanced: false, Root Key: -20, Tree: [ {-81}:-81  {-78}:-78  {-44}:-44  {-27}:-27  {-20}:-20  {-15}:-15  {24}:24  {29}:29  {31}:31  {35}:35  {63}:63  {76}:76  {82}:82  {93}:93  {97}:97 ]
+//    Size: 12, Height: 6, Is balanced: false, Root Key: 11, Tree: [ {-96}:-96  {-91}:-91  {-70}:-70  {-64}:-64  {-53}:-53  {-8}:-8  {-7}:-7  {-3}:-3  {6}:6  {11}:11  {32}:32  {64}:64 ]
+//    Size: 12, Height: 6, Is balanced: false, Root Key: 80, Tree: [ {-60}:-60  {-41}:-41  {0}:0  {6}:6  {7}:7  {14}:14  {39}:39  {50}:50  {57}:57  {79}:79  {80}:80  {95}:95 ]
+//    Size: 14, Height: 6, Is balanced: false, Root Key: -2, Tree: [ {-92}:-92  {-90}:-90  {-68}:-68  {-56}:-56  {-55}:-55  {-47}:-47  {-21}:-21  {-19}:-19  {-17}:-17  {-3}:-3  {-2}:-2  {10}:10  {85}:85  {90}:90 ]
+//    Size: 19, Height: 6, Is balanced: false, Root Key: -70, Tree: [ {-98}:-98  {-94}:-94  {-85}:-85  {-70}:-70  {-60}:-60  {-43}:-43  {-41}:-41  {-31}:-31  {-4}:-4  {-1}:-1  {0}:0  {3}:3  {32}:32  {39}:39  {60}:60  {66}:66  {71}:71  {80}:80  {84}:84 ]
